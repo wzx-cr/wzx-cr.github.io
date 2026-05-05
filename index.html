@@ -1,32 +1,407 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Audio Demo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>汪子翔 | 个人简历</title>
+  <meta name="description" content="汪子翔的个人简历：信息安全本科、语音增强、无监督学习、强化学习与智能语音处理方向。" />
   <style>
-    body{font-family:system-ui,sans-serif;max-width:900px;margin:30px auto;padding:0 16px}
-    .row{display:grid;grid-template-columns:140px 1fr 1fr;gap:10px 16px;align-items:center;margin:14px 0}
-    .hdr{font-weight:700;opacity:.8}
-    audio{width:100%}
-    .tag{font-weight:600}
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --main: #1f4e79;
+      --main-light: #eef5fb;
+      --accent: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .resume {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      padding: 40px 44px 32px;
+      background: linear-gradient(135deg, #f8fbff 0%, #eef5fb 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .name {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: 2px;
+      color: var(--main);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .contact {
+      display: grid;
+      gap: 8px;
+      align-content: center;
+      font-size: 15px;
+      color: #374151;
+    }
+
+    .contact span {
+      display: block;
+      text-align: right;
+    }
+
+    .content {
+      padding: 34px 44px 42px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--main);
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 5px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--main);
+      display: inline-block;
+    }
+
+    .edu-card,
+    .item-card {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .edu-main,
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .time {
+      white-space: nowrap;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .meta {
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: var(--main-light);
+      color: #24476a;
+      font-size: 14px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .project {
+      margin-bottom: 16px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .award-list,
+    .skill-list,
+    .strength-list {
+      display: grid;
+      gap: 10px;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .award-list li,
+    .skill-list li,
+    .strength-list li {
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .button:hover {
+      border-color: var(--main);
+      color: var(--main);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 18px 12px 36px;
+      }
+
+      .header {
+        grid-template-columns: 1fr;
+        padding: 30px 24px 24px;
+      }
+
+      .name {
+        font-size: 32px;
+      }
+
+      .contact span {
+        text-align: left;
+      }
+
+      .content {
+        padding: 26px 22px 32px;
+      }
+
+      .edu-main,
+      .item-head {
+        display: block;
+      }
+
+      .time {
+        display: block;
+        margin-top: 4px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .resume {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .header {
+        padding: 24px 28px 18px;
+      }
+
+      .content {
+        padding: 22px 28px 28px;
+      }
+
+      section {
+        margin-bottom: 20px;
+      }
+
+      .edu-card,
+      .item-card,
+      .award-list li,
+      .skill-list li,
+      .strength-list li {
+        break-inside: avoid;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>Audio Demo</h2>
+  <main class="page">
+    <div class="toolbar">
+      <button class="button" onclick="window.print()">打印 / 保存 PDF</button>
+    </div>
 
-  <div class="row">
-    <div></div><div class="hdr">Noisy</div><div class="hdr">Enhanced</div>
-  </div>
+    <article class="resume">
+      <header class="header">
+        <div>
+          <h1 class="name">汪子翔</h1>
+          <p class="subtitle">信息安全本科生｜语音增强｜无监督学习｜强化学习</p>
+        </div>
+        <div class="contact" aria-label="联系方式">
+          <span>手机：13851716601</span>
+          <span>邮箱：466775000@qq.com</span>
+          <span>出生年月：2004.11　民族：汉族</span>
+        </div>
+      </header>
 
-  <div class="row">
-    <div class="tag">Sample 01</div>
-    <audio controls preload="none">
-      <source src="assets/audio/s01_noisy.wav" type="audio/wav">
-    </audio>
-    <audio controls preload="none">
-      <source src="assets/audio/s01_enh.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+      <div class="content">
+        <section id="education">
+          <h2 class="section-title">教育背景</h2>
+          <div class="edu-card">
+            <div class="edu-main">
+              <span>中国矿业大学｜计算机科学与技术学院｜信息安全｜本科</span>
+              <span class="time">预计 2027.07 毕业</span>
+            </div>
+            <div class="meta-grid">
+              <div class="meta">GPA：3.98 / 5.00</div>
+              <div class="meta">专业排名：11 / 81（前 13.58%）</div>
+              <div class="meta">CET-6：446</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="research">
+          <h2 class="section-title">研究方向</h2>
+          <p>
+            主要关注语音增强、无监督学习、主观质量评价建模与强化学习在智能语音处理中的应用。目前围绕无干净语音参考条件下的语音增强问题开展研究，重点探索 MOS 驱动的无监督增强方法，以及面向域外噪声环境的测试时自适应语音增强方法。
+          </p>
+        </section>
+
+        <section id="projects">
+          <h2 class="section-title">科研 / 项目经历</h2>
+
+          <div class="item-card project">
+            <div class="item-head">
+              <span>基于 GRPO 的流式测试时自适应语音增强方法研究</span>
+              <span class="time">2025.06 - 至今</span>
+            </div>
+            <ul>
+              <li>针对真实语音增强系统在域外噪声条件下性能退化的问题，提出一种无需干净语音参考的测试时自适应方法，将增强器建模为连续动作空间下的随机策略，在推理阶段依据当前噪声输入在线更新模型。</li>
+              <li>为每个输入采样多个增强候选，结合 DNSMOS 感知质量分数与输入保真项构造奖励；采用组内相对归一化计算 advantage，并引入 GRPO 裁剪目标与 KL 约束稳定更新过程。</li>
+              <li>围绕流式场景中的数据量少、反馈无参考、动作维度高和更新不稳定等问题，系统分析并改进 reward 设计、log-prob 计算、ratio 稳定性与参考策略约束机制，为真实动态环境中的在线适应提供强化学习解决方案。</li>
+            </ul>
+          </div>
+
+          <div class="item-card project">
+            <div class="item-head">
+              <span>无监督 MOS 驱动语音增强方法研究</span>
+              <span class="time">2025.09 - 2026.02</span>
+            </div>
+            <ul>
+              <li>面向传统语音增强方法依赖 clean reference、真实场景中干净语音难以获取的问题，设计无需干净语音参考的无监督增强框架，利用带主观 MOS 标注的噪声语音直接训练增强模型。</li>
+              <li>在 STFT 幅度谱上构建基于 U-Net 的 mask-based enhancer，并联合训练 MOS-regression discriminator，为增强器提供动态对齐的无参考感知质量信号。</li>
+              <li>引入 waveform input-fidelity prior 与 MOS-target jitter，缓解 MOS-only 训练中的过度增强和判别器失准问题；进一步提出 MOS-prioritized data selection 策略，提升训练稳定性与感知质量。</li>
+              <li>在 VoiceBank+DEMAND 测试集上，相比 MOS-GAN 和 MetricGAN-U 在 DNSMOS P.835 指标 SIG / BAK / OVRL 上取得更优表现，其中 OVRL 达到 2.913，验证了联合 MOS 判别器训练和数据筛选策略的有效性。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="awards">
+          <h2 class="section-title">竞赛获奖</h2>
+          <ul class="award-list">
+            <li><span class="tag">2024</span>ASC 世界大学生超级计算机大赛 二等奖</li>
+            <li><span class="tag">2024</span>蓝桥杯 A 组省级二等奖</li>
+          </ul>
+        </section>
+
+        <section id="skills">
+          <h2 class="section-title">专业技能</h2>
+          <ul class="skill-list">
+            <li><strong>编程与工具：</strong>Python，C/C++，Linux，Git，conda 环境管理，实验日志分析。</li>
+            <li><strong>深度学习：</strong>PyTorch，PyTorch Lightning，U-Net，DCCRN，GAN，GRPO，PPO-style clipping。</li>
+            <li><strong>语音处理：</strong>STFT/iSTFT，torchaudio，librosa，DNSMOS，PESQ，STOI，SI-SNR。</li>
+          </ul>
+        </section>
+
+        <section id="strengths">
+          <h2 class="section-title">个人优势</h2>
+          <ul class="strength-list">
+            <li>具备扎实的计算机专业基础和较强的科研实践能力，能够独立完成从问题分析、方法设计、代码实现到实验验证的完整流程。</li>
+            <li>熟悉语音增强模型训练、无参考质量评价指标和实验结果分析，能够结合论文阅读、代码复现和实验调参推进研究问题。</li>
+          </ul>
+        </section>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
